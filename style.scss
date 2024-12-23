@@ -11,6 +11,15 @@
   src: url("./fonts/BungeeSpice-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Bungee Regular";
+  src: url("./fonts/Bungee-Regular.ttf");
+}
+
+.not-loaded * {
+  animation-play-state: paused !important;
+}
+
 :root {
   --dark-color: #000;
 }
@@ -22,7 +31,8 @@ body {
   flex-direction: column;
   height: 100vh;
   background-color: var(--dark-color);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   perspective: 1000px;
   padding: 50px 0px;
 }
@@ -1464,12 +1474,12 @@ animation:move-twink-back 200s linear infinite;
 .carousel-images img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta a proporção das imagens */
+  object-fit: cover;
 }
 
 .carousel-title {
   position: absolute;
-  top: 95%; /* Move o título um pouco mais para baixo */
+  top: 95%;
   transform: translateY(-95%);
   text-align: center;
   font-family: "Bungee Spicy";
@@ -1478,6 +1488,66 @@ animation:move-twink-back 200s linear infinite;
   transition: opacity 2s ease-in-out, top 2s ease-in-out;
 }
 
-.not-loaded * {
-  animation-play-state: paused !important;
+.timer-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 140%;
+  transform: translateY(-95%);
+  text-align: center;
+  font-family: "Bungee Regular";
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 2s ease-in-out, top 2s ease-in-out;
+  z-index: 1;
+  width: 85%;
+}
+
+.time-count{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.time-count h2 {
+  font-size: 36px;
+}
+
+.time-count h2, .time-count span{
+  background: #036A25;
+  background: linear-gradient(to top, #036A25 14%, #07D74C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timer-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: "Bungee Spicy";
+}
+
+.timer-container .countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  margin-bottom: 30px;
+}
+
+.timer-container .countdown-box span {
+  font-size: 36px;
+  font-weight: bold;
+  border: 4px groove #e25700;
+  padding: 10px;
+  margin: 5px;
+  width: 100px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.timer-container.active{
+  opacity: 1;
 }
